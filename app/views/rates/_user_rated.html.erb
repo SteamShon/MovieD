@@ -1,0 +1,19 @@
+<%= form_tag(movies_path(tag_id: @tag_id), { method: :get, remote: true }) do %>
+	<% for rate in @rated_movies %>
+	  <div class="row">
+	  	<div class="span6">
+		  	<%= link_to rate.movie.title, naver_movie_url(rate.movie.title), target: "_blank" %>
+		</div>
+		<div id="<%= rate.movie.id %>" class="span2">
+			<%= link_to "Poster", rate.movie, { method: :get, remote: true } %>
+		</div>
+		<div class="span2">
+			<%= link_to '<i class="icon-remove"></i>'.html_safe, 
+		  		rate, confirm: "Are you sure?", 
+		  		method: :delete, remote: true %>
+	  	</div>
+	  </div>
+	<% end %>
+	<%= hidden_field_tag :tag_id, @tag_id %>
+	<%= submit_tag "Analyze", { class: "btn" } %>
+<% end %>

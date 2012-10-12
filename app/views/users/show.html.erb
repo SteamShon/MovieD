@@ -1,0 +1,15 @@
+<h1><%= link_to @user.name, @user %></h1>
+<% if current_user.admin? && !current_user?(@user) %>
+	<%= link_to "delete", user, method: :delete, data: { confirm: "Are you sure" } %>
+<% end %>
+
+<ol>
+<% for tag in @user.tags %>
+  <li>
+  	<%= link_to tag.title, movies_path(tag_id: tag) %>
+  </li>
+<% end %>
+</ol>
+
+
+<%= link_to "Create New Tag", new_tag_path, { class: "btn" } %>

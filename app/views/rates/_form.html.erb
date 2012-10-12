@@ -1,0 +1,7 @@
+<%= form_for(Rate.new, { remote: true, class: "form-search" }) do |f| %>
+  <%= f.hidden_field :user_id, value: params[:user_id] %>
+  <%= f.hidden_field :tag_id, value: params[:tag_id] %>
+  <%= f.hidden_field :movie_id, value: movie.id %>
+  <%= f.select :rate, options_for_select((1..10)), { include_blank: true } %>
+  <%= f.submit "Rate", { class: "btn" } %>
+<% end %>

@@ -1,0 +1,14 @@
+<% for response in @response %>
+	<% movie = Movie.find(response["id"]) %>
+	<div class="row">
+		<div class="span6">
+			<%= link_to movie.title, naver_movie_url(movie.title), target: "_blank" %>
+		</div>
+		<div class="span2" id="<%= movie.id %>">
+			<%= link_to "Poster", movie, { method: :get, remote: true } %>
+		</div>
+		<div class="span2">
+			<%= response["score"] %>
+		</div>
+	</div>
+<% end %>

@@ -1,0 +1,5 @@
+<%= form_tag('/movies', { class: "form-search", method: :get}) do %>
+	<%= hidden_field_tag :tag_id, params[:tag_id] %>
+	<%= text_field_tag :query, params[:query], { class: "input-medium search-query" } %>
+	<%= submit_tag "search", { class: "btn" } %>
+<% end %>
