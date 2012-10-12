@@ -10,5 +10,8 @@
 		<div class="span2">
 			<%= response["score"] %>
 		</div>
+		<div class="span1">
+            <%= render partial: "/rates/form", locals: { movie: movie } %>
+        </div>
 	</div>
 <% end %>
