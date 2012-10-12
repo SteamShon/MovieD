@@ -1,13 +1,16 @@
-<div class="row">
-  <div class="span10">
-   1) Search by movie name on left <br />
-   2) Rate searched movies <br />
-   3) Click Analyze button(if it doens`t return any, refresh and try again)
-  </div>
+<div class="alert alert-block">
+<button type="button" class="close" data-dismiss="alert">×</button>
+<h4>Guiude!</h4>
+<ol>
+  <li>Search 5~10 movies by their name on left search form</li>
+  <li>Rate movies on search result</li>
+  <li>Once you rated more than 5~10 movies, then click analyze to discover</li>
+</ol>
 </div>
+
 <div class="row">
   <div class="span2"><%= link_to "<< Back", user_path(current_user),  { class: "pager" } %></div>
-  <div class="span10"><h1><%= Tag.find(@tag_id).title %> by <%= current_user.name %></h1></div>
+  <div class="span10"><h1><%= Tag.find(@tag_id).title %></h1></div>
 </div>
 
   <div class="row-fluid">
@@ -34,7 +37,6 @@
 
     <div class="span6">
       <div class="user_rated">
-        <p>Rated movies list</p>
         <%= render partial: "/rates/user_rated" %>
       </div>
 

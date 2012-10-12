@@ -1,4 +1,5 @@
 class RatesController < ApplicationController
+ 
   # GET /rates
   # GET /rates.json
   def index
@@ -87,4 +88,5 @@ class RatesController < ApplicationController
       format.js 
     end
   end
+
 end
