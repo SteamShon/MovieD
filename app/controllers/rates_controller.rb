@@ -51,7 +51,7 @@ class RatesController < ApplicationController
         current_user.rates << @rate 
         format.html { redirect_to @rate, notice: 'Rate was successfully created.' }
         format.json { render json: @rate, status: :created, location: @rate }
-        format.js 
+        format.js {}
       else
         format.html { render action: "new" }
         format.json { render json: @rate.errors, status: :unprocessable_entity }

@@ -8,11 +8,13 @@
 		<%= link_to "Poster", rate.movie, { method: :get, remote: true } %>
 	</div>
 	<div class="span2">
+		
 		<%= link_to '<i class="icon-remove"></i>'.html_safe, 
 	  		rate, confirm: "Are you sure?", 
 	  		method: :delete, remote: true %>
   	</div>
   </div>
 <% end %>
-
-<%= link_to "Analyze", movies_path(tag_id: params[:tag_id]), { class: "btn", remote: true } %>
+<% if @rated_movies.size > 0 %>
+  <%= link_to "Analyze", movies_path(tag_id: params[:tag_id]), { class: "btn", remote: true } %>
+<% end %>
