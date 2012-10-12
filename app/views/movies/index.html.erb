@@ -1,4 +1,11 @@
 <div class="row">
+  <div class="span10">
+   1) Search by movie name on left <br />
+   2) Rate searched movies <br />
+   3) Click Analyze button(if it doens`t return any, refresh and try again)
+  </div>
+</div>
+<div class="row">
   <div class="span2"><%= link_to "<<", user_path(current_user),  { class: "pager" } %></div>
   <div class="span10"><h1><%= Tag.find(@tag_id).title %> by <%= current_user.name %></h1></div>
 </div>
