@@ -12,12 +12,14 @@ class MoviesController < ApplicationController
         #@query = params[:query]
         #@movies = Movie.where("title like ?", "#{@query}%").paginate(page: params[:page])
     else
-        @movies = [].paginate(page: params[:page])
+        @movies = Movie.top_movies(params[:page]).paginate(page: params[:page], per_page: 50)
     end
     @user = current_user
     @rated_movies = Rate.where("user_id = ? and tag_id = ?", @user.id, @tag_id)
     respond_to do |format|
-      format.html 
+      format.html {
+        @top_movies = Movie.top_movies(params[:top_page])
+      }
       format.json { render json: @movies }
       format.js {
         User.insert_ratings(@user.id, @tag_id)

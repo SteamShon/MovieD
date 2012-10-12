@@ -29,4 +29,21 @@ class Movie < ActiveRecord::Base
     url = URI.encode("http://movie.naver.com/movie/search/result.nhn?query=#{title.strip}&ie=utf8")
     req = Net::HTTP.get(URI.parse(url))
   end
+
+  def self.top_movies(page)
+    require 'net/http'
+    url = URI.encode("http://movie.naver.com/movie/sdb/rank/rmovie.nhn?sel=pnt&date=#{DateTime.now.strftime('%Y%m%d')}&page=#{page}")
+    ret = Net::HTTP.get(URI.parse(url))
+    doc = Nokogiri::HTML(ret)
+    tops = doc.css('tbody a').map{ |t| t['title'] }
+    movies = []
+    tops.select{|t| t != nil}.each{|t| 
+      #movies << Movie.where("title like ?", "#{t}%")[0]
+      m = Movie.search{ fulltext t }.results
+      if m.size > 0
+        movies << m[0]
+      end
+    }
+    movies
+  end
 end

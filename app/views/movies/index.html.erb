@@ -18,9 +18,10 @@
 
     <div class="span6">
       <%= render "search" %>
+      <h2><%= params[:query] ? "Search result" : "Top rank movies" %></h2>
       <% for movie in @movies %>
         <div class="row">
-          <div class="span3" id="<%= movie.id %>">
+          <div class="span5" id="<%= movie.id %>">
             <%= link_to movie.title, naver_movie_url(movie.title), target: "_blank" %><br />
             <%= link_to '<i class="icon-film"></i>'.html_safe, 
                 movie, { method: :get, remote: true } %>
