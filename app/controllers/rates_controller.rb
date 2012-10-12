@@ -42,6 +42,7 @@ class RatesController < ApplicationController
   def create
     @rate = Rate.new(params[:rate])
     @rated_movies = Rate.where("user_id = ? and tag_id = ?", current_user.id, @rate.tag_id)
+    params[:tag_id] = @rate.tag_id
     #@rate = Rate.new(params[:rate])
 
     respond_to do |format|
@@ -77,6 +78,7 @@ class RatesController < ApplicationController
   # DELETE /rates/1.json
   def destroy
     @rate = Rate.find(params[:id])
+    params[:tag_id] = @rate.tag_id
     @rate.destroy
     @rated_movies = Rate.where("user_id = ? and tag_id = ?", @rate.user_id, @rate.tag_id)
     respond_to do |format|

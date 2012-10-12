@@ -6,7 +6,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="span2"><%= link_to "<<", user_path(current_user),  { class: "pager" } %></div>
+  <div class="span2"><%= link_to "<< Back", user_path(current_user),  { class: "pager" } %></div>
   <div class="span10"><h1><%= Tag.find(@tag_id).title %> by <%= current_user.name %></h1></div>
 </div>
 
