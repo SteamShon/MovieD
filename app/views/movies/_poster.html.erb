@@ -1,1 +1,2 @@
-<%= link_to "Poster", movie, { method: :get, remote: true } %>
+<%= link_to @movie.title, naver_movie_url(@movie.title), target: "_blank" %> <br />
+<img src="<%= @movie.poster %>">

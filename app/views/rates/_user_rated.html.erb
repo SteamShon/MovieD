@@ -1,18 +1,15 @@
 
 <% for rate in @rated_movies %>
   <div class="row">
-  	<div class="span6">
+  	<div class="span5" id="<%= rate.movie.id %>">
 	  	<%= link_to rate.movie.title, naver_movie_url(rate.movie.title), target: "_blank" %>
+      <br />
+		  <%= link_to '<i class="icon-film"></i>'.html_safe, 
+				rate.movie, { method: :get, remote: true } %>
 	</div>
-	<div id="<%= rate.movie.id %>" class="span2">
-		<%= link_to "Poster", rate.movie, { method: :get, remote: true } %>
-	</div>
-	<div class="span2">
-		
-		<%= link_to '<i class="icon-remove"></i>'.html_safe, 
-	  		rate, confirm: "Are you sure?", 
-	  		method: :delete, remote: true %>
-  	</div>
+	<%= link_to '<i class="icon-remove"></i>'.html_safe, 
+  		rate, confirm: "Are you sure?", 
+  		method: :delete, remote: true %>
   </div>
 <% end %>
 <% if @rated_movies.size > 0 %>

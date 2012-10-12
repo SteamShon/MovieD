@@ -1,15 +1,13 @@
 <% for response in @response %>
 	<% movie = Movie.find(response["id"]) %>
 	<div class="row">
-		<div class="span6">
-			<%= link_to movie.title, naver_movie_url(movie.title), target: "_blank" %>
+		<div class="span5" id="<%= movie.id %>">
+			<%= link_to movie.title, naver_movie_url(movie.title), target: "_blank" %>, <%= response["score"] %> 
+			<br />
+			<%= link_to '<i class="icon-film"></i>'.html_safe, 
+				movie, { method: :get, remote: true } %>
 		</div>
-		<div class="span2" id="<%= movie.id %>">
-			<%= link_to "Poster", movie, { method: :get, remote: true } %>
-		</div>
-		<div class="span2">
-			<%= response["score"] %>
-		</div>
+		
 		<div class="span1">
             <%= render partial: "/rates/form", locals: { movie: movie } %>
         </div>

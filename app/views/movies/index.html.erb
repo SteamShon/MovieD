@@ -5,6 +5,7 @@
   <li>Search 5~10 movies by their name on left search form</li>
   <li>Rate movies on search result</li>
   <li>Once you rated more than 5~10 movies, then click analyze to discover</li>
+  <li>To see movie poster, click film icon(note: this is just top search result image from movie.naver.com</li>
 </ol>
 </div>
 
@@ -19,12 +20,12 @@
       <%= render "search" %>
       <% for movie in @movies %>
         <div class="row">
-          <div class="span3">
-            <%= link_to movie.title, naver_movie_url(movie.title), target: "_blank" %>
+          <div class="span3" id="<%= movie.id %>">
+            <%= link_to movie.title, naver_movie_url(movie.title), target: "_blank" %><br />
+            <%= link_to '<i class="icon-film"></i>'.html_safe, 
+                movie, { method: :get, remote: true } %>
           </div>
-          <div class="span2" id="<%= movie.id %>">
-            <%= link_to "Poster", movie, { remote: true } %>
-          </div>
+          
           <div class="span1">
             <%= render partial: "/rates/form", locals: { movie: movie } %>
           </div>
