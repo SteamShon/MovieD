@@ -22,8 +22,9 @@ class MoviesController < ApplicationController
       }
       format.json { render json: @movies }
       format.js {
-        User.insert_ratings(@user.id, @tag_id)
-        @response = User.select_ratings(@user.id)
+        #User.insert_ratings(@user.id, @tag_id)
+        #@response = User.select_ratings(@user.id)
+        @response = User.recommendations(@user.id, @tag_id)
       }
     end
   end
