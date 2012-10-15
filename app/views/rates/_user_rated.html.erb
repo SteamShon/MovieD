@@ -3,6 +3,7 @@
   <div class="row">
   	<div class="span5" id="<%= rate.movie.id %>">
 	  	<%= link_to rate.movie.title, naver_movie_url(rate.movie.title), target: "_blank" %>
+        , <%= rate.rate %>
       <br />
 		  <%= link_to '<i class="icon-film"></i>'.html_safe, 
 				rate.movie, { method: :get, remote: true } %>
