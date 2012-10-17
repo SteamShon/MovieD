@@ -6,7 +6,7 @@ IO.readlines(ARGV[0]).each do |line|
   
   uri = URI.parse("http://movie.naver.com/movie/bi/mi/basic.nhn?code=#{nid}")
   req = Net::HTTP::Get.new(uri.request_uri)
-  req.basic_auth 'shom83', '83shon'
+  #req.basic_auth 'shom83', '83shon'
   
   result = Net::HTTP.get(uri)
  
@@ -32,5 +32,7 @@ IO.readlines(ARGV[0]).each do |line|
       tmp[k] += v
     end
     puts "#{id},#{nid},#{movie_name},#{movie_en},#{tmp.values.join(",")},#{img}"
+  else
+    puts "#{id},#{nid},#{title}"
   end
 end

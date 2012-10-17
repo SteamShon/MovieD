@@ -18,7 +18,6 @@
 
     <div class="span6">
       <%= render "search" %>
-      <h2><%= params[:query] ? "Search result" : "Top rank movies" %></h2>
       <% for movie in @movies %>
         <div class="row">
           <div class="span5" id="<%= movie.id %>">
