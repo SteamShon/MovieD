@@ -12,7 +12,8 @@ class MoviesController < ApplicationController
         #@query = params[:query]
         #@movies = Movie.where("title like ?", "#{@query}%").paginate(page: params[:page])
     else
-        @movies = Movie.top_movies(params[:page]).paginate(page: params[:page], per_page: 50)
+        @movies = [].paginate(page: params[:page])
+        #@movies = Movie.top_movies(params[:page]).paginate(page: params[:page], per_page: 50)
     end
     @user = current_user
     @rated_movies = Rate.where("user_id = ? and tag_id = ?", @user.id, @tag_id)

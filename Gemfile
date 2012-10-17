@@ -8,6 +8,7 @@ gem 'redis'
 gem 'nokogiri'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+gem 'nokogiri'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
