@@ -1,9 +1,9 @@
 class Movie < ActiveRecord::Base
   attr_accessible :title, :id, :created_at, :updated_at, :original_id
 
-  #searchable do 
-  #  text :title
-  #end
+  searchable do 
+    text :title
+  end
 
   def self.upload(file)
     ActiveRecord::Base.transaction do 
@@ -21,13 +21,12 @@ class Movie < ActiveRecord::Base
     require 'net/http'
     result = naver_movie_url
     doc = Nokogiri::HTML(result)
-    img_srcs = doc.css('img').map{ |i| i['src'] }
-    img_srcs.select{|i| i.include?("movie.phinf.naver.net")}[0]
+    img_src = doc.css('div[class="wide_info_area"] div[class="poster"] img')[0]['src']
   end
 
   def naver_movie_url
     require 'net/http'
-    url = URI.encode("http://movie.naver.com/movie/search/result.nhn?query=#{title.strip}&ie=utf8")
+    url = URI.encode("http://movie.naver.com/movie/bi/mi/basic.nhn?code=#{original_id}")
     req = Net::HTTP.get(URI.parse(url))
   end
 
