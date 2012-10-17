@@ -1,15 +1,16 @@
 class Movie < ActiveRecord::Base
-  attr_accessible :title, :id, :created_at, :updated_at
+  attr_accessible :title, :id, :created_at, :updated_at, :original_id
 
-  searchable do 
-    text :title
-  end
+  #searchable do 
+  #  text :title
+  #end
 
   def self.upload(file)
     ActiveRecord::Base.transaction do 
     IO.readlines(file).each{|line|
-      job_id, id, oid, title = line.split("|")
-      Movie.create(id: id, title: title)
+      #job_id, id, oid, title = line.split("|")
+      id, oid, title = line.split(",")
+      Movie.create(id: id, title: title, original_id: oid)
     }
     end
   end
