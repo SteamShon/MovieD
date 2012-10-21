@@ -1,0 +1,14 @@
+<% for movie in @response %>
+	<div class="row">
+		<div class="span5" id="<%= movie.id %>">
+			<%= link_to movie.title, naver_movie_url(movie.title), target: "_blank" %>
+			<br />
+			<%= link_to '<i class="icon-film"></i>'.html_safe, 
+				movie, { method: :get, remote: true } %>
+		</div>
+		
+		<div class="span1">
+            <%= render partial: "/rates/form", locals: { movie: movie } %>
+        </div>
+	</div>
+<% end %>

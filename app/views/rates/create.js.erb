@@ -1,1 +1,1 @@
-$(".user_rated").html("<%= escape_javascript(render partial: '/rates/user_rated') %>");
+$(".user_rated").html("<%= escape_javascript(render partial: "/rates/rate", locals: { rates: @rated_movies }) %>");

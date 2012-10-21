@@ -173,3 +173,50 @@ input, textarea, select, .uneditable-input {
     	}
   	}		
 }
+
+.movie-item {
+    font-size: 14px;
+    display: inline-block;
+    margin: 10px 10px 10px 10px;
+    padding: 0;
+    width: 20.00%;
+    min-height: 300px;
+    vertical-align: top;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding: 20px 10px 10px 20px;
+}
+
+.movie-item:nth-child(5n+1):before {
+    content:'';
+    position: absolute;
+    margin-top: -20px;
+    display: block;
+    left: 0;
+    right: -10px;
+}
+
+
+.movie-item-small {
+    font-size: 14px;
+    display: inline-block;
+    margin: 5px 5px 5px 5px;
+    padding: 0;
+    width: 14.75%;
+    min-height: 300px;
+    vertical-align: top;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding: 0px 0px 0px 0px;
+}
+
+.movie-item-small:nth-child(7n+1):before {
+    content:'';
+    position: absolute;
+    margin-top: -20px;
+    display: block;
+    left: 0;
+    right: -10px;
+}

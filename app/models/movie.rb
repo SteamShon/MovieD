@@ -1,5 +1,5 @@
 class Movie < ActiveRecord::Base
-  attr_accessible :title, :id, :created_at, :updated_at, :original_id
+  attr_accessible :title, :id, :created_at, :updated_at, :original_id, :image
 
   searchable do 
     text :title
@@ -9,19 +9,34 @@ class Movie < ActiveRecord::Base
     ActiveRecord::Base.transaction do 
     IO.readlines(file).each{|line|
       #job_id, id, oid, title = line.split("|")
-      id, oid, title = line.split(",")
-      Movie.create(id: id, title: title, original_id: oid)
+      id, oid, title, img = line.split(",")
+      Movie.create(id: id, title: title, original_id: oid, image: img)
     }
     end
   end
-
+  def self.all_posters(outfile)
+    of = File.new(outfile, "w")
+    cnt = 0
+    self.all.each{|movie|
+        cnt += 1
+        if cnt % 1000 == 0
+           puts cnt
+        end
+    	of.write("#{movie.id},#{movie.original_id},#{movie.poster}\n")
+    }
+    of.close
+  end
   def poster
     require "nokogiri"
     require 'open-uri'
     require 'net/http'
     result = naver_movie_url
     doc = Nokogiri::HTML(result)
-    img_src = doc.css('div[class="wide_info_area"] div[class="poster"] img')[0]['src']
+    begin
+       img_src = doc.css('div[class="wide_info_area"] div[class="poster"] img')[0]['src']
+    rescue
+       ""
+    end    
   end
 
   def naver_movie_url

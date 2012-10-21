@@ -34,11 +34,23 @@ class User < ActiveRecord::Base
       result[id.to_i] = score.to_f
     end
     result
+=begin    
+    result = response.split(",").collect do |t|
+      id, score = t.split(":")
+      Movie.find(id)
+    end
+=end
   end
 
   def self.recommendations(user_id, tag_id)
+    self.insert_ratings(user_id, tag_id)
+    result = self.select_ratings(user_id)
+    result.sort_by{|k, v| v}.reverse    
+    
+=begin
     require 'redis'
     require 'net/http'
+
     redis = Redis.new
     redis.select(2)
     pos_rates = Rate.where("user_id = ? and tag_id = ? and rate > 0", user_id, tag_id)
@@ -69,6 +81,7 @@ class User < ActiveRecord::Base
       result = self.select_ratings(user_id)
     end
     result.sort_by{|k, v| v}.reverse    
+=end
   end
 
   private

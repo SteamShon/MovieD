@@ -1,0 +1,10 @@
+<% for movie in movies %>
+<div class="row">	
+	<div class="span2 well">
+		<%= link_to movie.title, naver_movie_url(movie.title), target: "_blank" %>
+		<br />
+		<%= image_tag movie.image %>
+		<%= render partial: "/rates/new_form", locals: { rate: Rate.new, movie: movie } %>
+	</div>
+</div>
+<% end %>

@@ -85,7 +85,7 @@ class RatesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to rates_url }
       format.json { head :no_content }
-      format.js 
+      format.js  { render "create"}
     end
   end
 

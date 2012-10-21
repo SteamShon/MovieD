@@ -1,0 +1,2 @@
+$(".recs").html("<%= escape_javascript(render 'response') %>");
+#$(".recs").html("<%= escape_javascript(render partial: 'movie', locals: { movies: @response }) %>");

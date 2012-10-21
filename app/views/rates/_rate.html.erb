@@ -1,0 +1,13 @@
+<% for rate in rates %>
+<% movie = rate.movie %>
+	<div class="movie-item well">
+		<%= link_to movie.title, naver_movie_url(movie.title), target: "_blank" %>
+		<%= link_to '<i class="icon-remove"></i>'.html_safe,
+              		rate, confirm: "Are you sure?",
+              		method: :delete, remote: true %>	
+		
+		<br />
+		<%= image_tag movie.image %>
+		<%= render partial: "/rates/new_form", locals: { rate: rate, movie: movie } %>
+	</div>
+<% end %>
