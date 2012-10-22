@@ -12,7 +12,7 @@ IO.readlines(ARGV[0]).each do |line|
  
   doc = Nokogiri::HTML(result)
   info = doc.css('div[class="wide_info_area"]')[0]
-  if info
+  
     imgs = info.css('div[class="poster"] img')
     img = imgs.size > 0 ? imgs[0]['src'] : ""
     t = info.css('div[class="mv_info"] h3[class="h_movie"]')  
@@ -32,7 +32,4 @@ IO.readlines(ARGV[0]).each do |line|
       tmp[k] += v
     end
     puts "#{id},#{nid},#{movie_name},#{movie_en},#{tmp.values.join(",")},#{img}"
-  else
-    puts "#{id},#{nid},#{title}"
-  end
 end

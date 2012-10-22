@@ -9,6 +9,7 @@ gem 'nokogiri'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'progress_bar'
+gem 'nokogiri'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
